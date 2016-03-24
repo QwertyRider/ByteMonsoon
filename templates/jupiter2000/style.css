@@ -1,0 +1,214 @@
+/* Body font and bgcolor  */
+
+body 	{
+	background-color: #295e85;
+	scrollbar-base-color: #336699;
+	font-size: 10pt/12px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	margin-left: 1em;
+	}
+img 	{
+	border:none;
+	}
+H2	{
+	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+	color: #bfd411; 
+	font-size: 16px;
+	}
+H3	{
+	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+	background-color: #507a99;
+	color: #bfd411; 
+	font-size: 12px;
+	}
+li	{
+	font-size: 12px;
+	}
+	
+/* Link styles for all available classes */
+
+a.sort	{
+	text-decoration: none;
+	font-size: 8px;
+	}
+a:hover.sort
+	{
+	}
+a:hover.download
+	{
+	color: red;
+	}
+a.download
+	{
+	color: #bfd411;
+	}
+a:visited.download
+	{
+	color: #bfd411;
+	}
+a.stats	{
+	text-decoration: none;
+	}
+a:visited.stats
+	{
+	color: #ffffff;
+	}
+a:hover.stats
+	{
+	color: red;
+	}
+a:visited
+        {
+       	color: #bfd411;
+	font-size: 10pt/12px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	}
+a:link.stats
+	{
+	color: #ffffff;
+	}
+a:hover	{
+	color: red;
+	}
+a:link	{
+	color: #bfd411;
+	text-decoration: none;
+	font-size: 10pt/12px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	}
+
+/* Table elements for all available classes */
+
+table	{
+	border: hidden;
+	border-style: none;
+	border-spacing: 0;
+	padding: 0px;
+	}
+tr	{
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #bfd411;
+	font-size: 10px;
+	}
+/* Table row alternating color */	
+tr+tr, tr+tr+tr+tr, tr+tr+tr+tr+tr+tr { background: #295e85; }
+tr+tr+tr, tr+tr+tr+tr+tr { background: #507a99; }	
+td	{
+	font-size: 12px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #ffffff;
+	}
+td.date	{
+	font-size: 12px;
+	text-align: right;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #ffffff;
+	white-space: nowrap;
+	}
+td.bytes
+	{
+	font-size: 12px;
+	text-align: right;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #ffffff;
+	white-space: nowrap;
+	}
+td.number
+	{
+	font-size: 12px;
+	text-align: right;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #ffffff;
+	}
+td.number_red
+	{
+	color: #ff0000;
+	font-weight: bold;
+	text-align: right;
+	}
+td.number_yellow
+	{
+	color: #ffff00;
+	font-weight: bold;
+	text-align: right;
+	}
+td.number_green
+	{
+	color: #000000;
+	font-weight: bold;
+	text-align: right;
+	}
+td.ip	{
+	font-size: 12px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #000000;
+	}
+td.com_header
+	{
+	font-size: 14px;
+	background-color: #507a99;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #000000;
+	}
+td.name	{
+	font-size: 12px;
+	white-space: nowrap;
+	}
+td.path	{
+	font-size: 12px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	color: #ffffff;
+	}
+td.com_body
+	{
+	font-size: 18px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	}
+th	{
+	color: #bfd411;
+	border-bottom: solid 1px solid silver;
+	font-size: 10px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	background-color: #507a99;
+	}
+th.date	{
+	color: #bfd411;
+	}
+th.bytes
+	{
+	color: #bfd411;
+	}
+th.number
+	{
+	color: #bfd411;
+	}
+th.ip	{
+	color: #bfd411;
+	}
+th.com_path
+	{
+	color: #bfd411;
+	}
+span.username
+	{
+	color: #000000;
+	background-color: #507a99;
+	}
+p.login1_admin { font-size: 10px; }
+p.login2_admin { font-size: 10px; }
+p.login1_comments { font-size: 10px; }
+p.login2_comments { font-size: 10px; }
+p.login1_index { font-size: 10px; }
+p.login2_index { font-size: 10px; }
+p.login1_info { font-size: 10px; }
+p.login2_info { font-size: 10px; }
+p.login1_signup { font-size: 10px; }
+p.login2_signup { font-size: 10px; }
+p.login1_stats { font-size: 10px; }
+p.login2_stats { font-size: 10px; }
+p.login1_upload { font-size: 10px; }
+p.login2_upload { font-size: 10px; }
+p.login1_users { font-size: 10px; }
+p.login2_users { font-size: 10px; }

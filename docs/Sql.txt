@@ -1,0 +1,204 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.0-rc3
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Oct 31, 2004 at 07:00 PM
+-- Server version: 4.0.21
+-- PHP Version: 5.0.2
+-- 
+-- Database: `tracker`
+-- 
+CREATE DATABASE `tracker`;
+USE tracker;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `avps`
+-- 
+
+CREATE TABLE `avps` (
+  `arg` varchar(20) NOT NULL default '',
+  `value` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`arg`)
+) TYPE=MyISAM;
+
+-- 
+-- Dumping data for table `avps`
+-- 
+
+INSERT INTO `avps` VALUES ('lastcleantime', 1099177484);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `categories`
+-- 
+
+CREATE TABLE `categories` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(30) NOT NULL default '',
+  `sort_index` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=14 ;
+
+-- 
+-- Dumping data for table `categories`
+-- 
+
+INSERT INTO `categories` VALUES (1, 'Movies', 10);
+INSERT INTO `categories` VALUES (2, 'Music', 20);
+INSERT INTO `categories` VALUES (3, 'TV', 30);
+INSERT INTO `categories` VALUES (4, 'Games', 40);
+INSERT INTO `categories` VALUES (5, 'Apps', 50);
+INSERT INTO `categories` VALUES (6, 'Misc.', 60);
+INSERT INTO `categories` VALUES (8, 'Pictures', 80);
+INSERT INTO `categories` VALUES (9, 'Anime', 90);
+INSERT INTO `categories` VALUES (10, 'Comics', 100);
+INSERT INTO `categories` VALUES (11, 'Books', 110);
+INSERT INTO `categories` VALUES (13, 'Music Vid.', 120);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `comments`
+-- 
+
+CREATE TABLE `comments` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `user` int(10) unsigned NOT NULL default '0',
+  `torrent` int(10) unsigned NOT NULL default '0',
+  `added` datetime NOT NULL default '0000-00-00 00:00:00',
+  `text` text NOT NULL,
+  `ori_text` text NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `user` (`user`),
+  KEY `torrent` (`torrent`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `comments`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `files`
+-- 
+
+CREATE TABLE `files` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `torrent` int(10) unsigned NOT NULL default '0',
+  `filename` varchar(255) NOT NULL default '',
+  `size` bigint(20) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `torrent` (`torrent`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `files`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `peers`
+-- 
+
+CREATE TABLE `peers` (
+  `torrent` int(10) unsigned NOT NULL default '0',
+  `peer_id` char(20) binary NOT NULL default '',
+  `ip` char(15) NOT NULL default '',
+  `port` smallint(5) unsigned NOT NULL default '0',
+  `uploaded` bigint(20) unsigned NOT NULL default '0',
+  `downloaded` bigint(20) unsigned NOT NULL default '0',
+  `to_go` bigint(20) unsigned NOT NULL default '0',
+  `seeder` enum('yes','no') NOT NULL default 'no',
+  `started` datetime NOT NULL default '0000-00-00 00:00:00',
+  `last_action` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`torrent`,`peer_id`),
+  KEY `torrent` (`torrent`)
+) TYPE=MyISAM;
+
+-- 
+-- Dumping data for table `peers`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `torrents`
+-- 
+
+CREATE TABLE `torrents` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `info_hash` varchar(20) binary NOT NULL default '',
+  `name` varchar(255) NOT NULL default '',
+  `filename` varchar(255) NOT NULL default '',
+  `save_as` varchar(255) NOT NULL default '',
+  `search_text` text NOT NULL,
+  `descr` text NOT NULL,
+  `ori_descr` text NOT NULL,
+  `category` int(10) unsigned NOT NULL default '0',
+  `size` bigint(20) unsigned NOT NULL default '0',
+  `added` datetime NOT NULL default '0000-00-00 00:00:00',
+  `type` enum('single','multi') NOT NULL default 'single',
+  `numfiles` int(10) unsigned NOT NULL default '0',
+  `views` int(10) unsigned NOT NULL default '0',
+  `hits` int(10) unsigned NOT NULL default '0',
+  `times_completed` int(10) unsigned NOT NULL default '0',
+  `last_action` datetime NOT NULL default '0000-00-00 00:00:00',
+  `visible` enum('yes','no') NOT NULL default 'yes',
+  `owner` int(10) unsigned NOT NULL default '0',
+  `seeders` int(10) unsigned NOT NULL default '0',
+  `leechers` int(10) unsigned NOT NULL default '0',
+  `comments` int(10) unsigned NOT NULL default '0',
+  `banned` enum('yes','no') NOT NULL default 'no',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `info_hash` (`info_hash`),
+  KEY `owner` (`owner`),
+  KEY `visible` (`visible`),
+  KEY `category_visible` (`category`,`visible`),
+  KEY `filename` (`filename`),
+  KEY `name` (`name`),
+  KEY `added` (`added`),
+  KEY `last_action` (`last_action`),
+  FULLTEXT KEY `ft_search` (`search_text`,`ori_descr`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `torrents`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `users`
+-- 
+
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `username` varchar(40) NOT NULL default '',
+  `password` varchar(40) NOT NULL default '',
+  `secret` varchar(20) binary NOT NULL default '',
+  `email` varchar(80) NOT NULL default '',
+  `status` enum('inactive','active') NOT NULL default 'inactive',
+  `added` datetime NOT NULL default '0000-00-00 00:00:00',
+  `last_login` datetime NOT NULL default '0000-00-00 00:00:00',
+  `last_access` datetime NOT NULL default '0000-00-00 00:00:00',
+  `admin` enum('yes','no') NOT NULL default 'no',
+  `editsecret` varchar(20) binary NOT NULL default '',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `username` (`username`),
+  KEY `status_added` (`status`,`added`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `users`
+-- 
+
